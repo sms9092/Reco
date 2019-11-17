@@ -9,27 +9,62 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private EditText etUserName;
+    private EditText etPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        final EditText etUserName = findViewById(R.id.etUsername);
-        final EditText etPassword = findViewById(R.id.etPassword);
+         etUserName = findViewById(R.id.etUsername);
+         etPassword = findViewById(R.id.etPassword);
 
-        final Button bLoggin = findViewById(R.id.Login);
-        final TextView RegisterLink = findViewById(R.id.tvRegisterHere);
-
-        RegisterLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
-                LoginActivity.this.startActivity(registerIntent);
-
-
-            }
-        });
+       findViewById(R.id.Login).setOnClickListener(this);
+       findViewById(R.id.tvRegisterHere).setOnClickListener(this);
     }
+
+
+
+
+    private void registerActivity(){
+        Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+        LoginActivity.this.startActivity(registerIntent);
+
+
+    }
+
+
+    private void userLogin(){
+        String username = etUserName.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
+
+        if(username.isEmpty()){
+            etUserName.setError("Username is required");
+            etUserName.requestFocus();
+
+        }
+
+        if(password.isEmpty()){
+            etPassword.setError("Password is required");
+            etPassword.requestFocus();
+
+        }
+
+    }
+
+    @Override
+    public void onClick(View v){
+        switch(v.getId()){
+            case R.id.Login:
+                userLogin();
+                break;
+
+            case R.id.tvRegisterHere:
+                registerActivity();
+                break;
+        }
+    }
+
 }

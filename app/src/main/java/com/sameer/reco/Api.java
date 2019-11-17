@@ -11,7 +11,7 @@ public interface Api {
 
 
     @FormUrlEncoded
-    @POST("api")
+    @POST("register")
     Call<ResponseBody> RegisterUser(
             @Field("name") String name,
             @Field("username") String username,

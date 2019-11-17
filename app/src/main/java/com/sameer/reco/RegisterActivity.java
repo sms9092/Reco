@@ -51,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
                     call.enqueue(new Callback<ResponseBody>() {
                         @Override
                         public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
                            try {
                                String s = response.body().string();
                                System.out.println("Successful");
