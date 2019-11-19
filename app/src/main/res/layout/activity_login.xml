@@ -43,7 +43,7 @@
         android:gravity="center"/>
 
     <Button
-        android:text="Log In Here"
+        android:text="LogIn Here"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etPassword"

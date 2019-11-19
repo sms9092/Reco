@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText etUserName = findViewById(R.id.etUsername);
         final EditText etPassword = findViewById(R.id.etPassword);
 
-        final Button bRegister = findViewById(R.id.Reggister);
+        final Button bRegister = findViewById(R.id.Register);
 
         bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,27 +43,24 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-                    Call<ResponseBody> call = RetroFitClient
+                    Call<User> call = RetroFitClient
                             .getInstance()
                             .getApi()
                             .RegisterUser(name,username,password);
 
-                    call.enqueue(new Callback<ResponseBody>() {
+                    call.enqueue(new Callback<User>() {
                         @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        public void onResponse(Call<User> call, Response<User> response) {
 
-                           try {
-                               String s = response.body().string();
-                               System.out.println("Successful");
-                               Toast.makeText(RegisterActivity.this,s,Toast.LENGTH_LONG).show();
-                           } catch (IOException e){
-                               e.printStackTrace();
-                           }
+                               Intent LoginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+                               RegisterActivity.this.startActivity(LoginIntent);
+
+
 
                         }
 
                         @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        public void onFailure(Call<User> call, Throwable t) {
                             System.out.println("Failed");
                             Toast.makeText(RegisterActivity.this,t.getMessage(),Toast.LENGTH_LONG).show();
                         }
