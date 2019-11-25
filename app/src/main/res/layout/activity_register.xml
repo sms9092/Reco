@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="User Login Form"
+        android:text="User Register Form"
         android:textColor="#070505"
         android:textSize="20dp" />
 
@@ -54,12 +54,42 @@
         android:hint="Enter Your Password Here"
         android:gravity="center"/>
 
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:inputType="phone"
+        android:ems="10"
+        android:layout_below="@+id/etPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/etMobileNumber"
+        android:hint="Enter Your Mobile Number Here"
+        android:gravity="center"/>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:entries="@array/BloodGroup"
+        android:layout_below="@+id/etMobileNumber"
+        />
+
+    <TextView
+        android:id="@+id/etDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_below="@+id/spinner"
+        android:layout_marginTop="20dp"
+        />
+
     <Button
         android:id="@+id/Register"
         android:text="Register here"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etPassword"
+        android:layout_below="@+id/etDate"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:gravity="center" />

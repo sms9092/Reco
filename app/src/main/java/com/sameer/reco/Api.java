@@ -17,7 +17,10 @@ public interface Api {
     Call<User> RegisterUser(
             @Field("name") String name,
             @Field("username") String username,
-            @Field("password") String password
+            @Field("password") String password,
+            @Field("mobile") String mobile,
+            @Field("blood") String blood,
+            @Field("dob") String dob
     );
 
     @POST("login")

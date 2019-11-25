@@ -17,4 +17,5 @@ public class User {
     public String getResponse() {
         return Response;
     }
+
 }

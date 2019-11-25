@@ -7,4 +7,15 @@
     <string name="pref_file">com.sameer.preference_file</string>
     <string name="pref_login_status">com.sameer.preference_login_status</string>
     <string name="pref_user_name">com.sameer.preference_user_name</string>
+    <string-array name="BloodGroup">
+        <item></item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+    </string-array>
 </resources>
