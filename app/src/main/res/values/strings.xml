@@ -7,6 +7,7 @@
     <string name="pref_file">com.sameer.preference_file</string>
     <string name="pref_login_status">com.sameer.preference_login_status</string>
     <string name="pref_user_name">com.sameer.preference_user_name</string>
+    <string name="pref_profile">com.sameer.preference_profile</string>
     <string-array name="BloodGroup">
         <item></item>
         <item>O+</item>
@@ -17,5 +18,19 @@
         <item>B-</item>
         <item>AB+</item>
         <item>AB-</item>
+    </string-array>
+    <string-array name="Gender">
+        <item></item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    <string-array name="Allergies">
+        <item>Drug Allergy</item>
+        <item>Food Allergy</item>
+        <item>Insect Allergy</item>
+        <item>Latex Allergy</item>
+        <item>Mold Allergy</item>
+        <item>Pet Allergy</item>
+        <item>Pollen Allergy</item>
     </string-array>
 </resources>

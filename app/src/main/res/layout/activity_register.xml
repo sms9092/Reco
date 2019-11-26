@@ -17,28 +17,18 @@
         android:textColor="#070505"
         android:textSize="20dp" />
 
-    <EditText
-        android:id="@+id/etName"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:ems="10"
-        android:hint="Enter Your Name here"
-        android:inputType="textPersonName"
-        android:gravity="center"
-        android:layout_below="@+id/textView" />
+
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_below="@+id/etName"
+        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:id="@+id/etUsername"
-        android:hint="Enter Your Email Here"
+        android:hint="Enter Your Username Here"
         android:gravity="center"
         />
 
@@ -55,24 +45,57 @@
         android:gravity="center"/>
 
     <EditText
+        android:id="@+id/etFirstName"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:inputType="phone"
-        android:ems="10"
-        android:layout_below="@+id/etPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:id="@+id/etMobileNumber"
-        android:hint="Enter Your Mobile Number Here"
+        android:ems="10"
+        android:hint="Enter Your First Name here"
+        android:inputType="textPersonName"
+        android:gravity="center"
+        android:layout_below="@+id/etPassword" />
+
+    <EditText
+        android:id="@+id/etLastName"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Enter Your Last Name here"
+        android:inputType="textPersonName"
+        android:gravity="center"
+        android:layout_below="@+id/etFirstName" />
+
+    <Spinner
+        android:id="@+id/genderSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:entries="@array/Gender"
+        android:layout_below="@+id/etLastName"
+        />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:layout_below="@+id/genderSpinner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/etEmailAddress"
+        android:hint="Enter Your Email Here"
         android:gravity="center"/>
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/bloodSpinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:entries="@array/BloodGroup"
-        android:layout_below="@+id/etMobileNumber"
+        android:layout_below="@+id/etEmailAddress"
         />
 
     <TextView
@@ -80,16 +103,37 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:layout_below="@+id/spinner"
+        android:layout_below="@+id/bloodSpinner"
         android:layout_marginTop="20dp"
         />
+
+
+    <TextView
+        android:id="@+id/etAllergies"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Check all allergies"
+        android:layout_below="@+id/etDate"
+        android:layout_marginTop="20dp"
+        />
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/etAllergies"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/etChronicDisease"
+        android:hint="Enter Chronic Disease"
+        android:gravity="center"/>
 
     <Button
         android:id="@+id/Register"
         android:text="Register here"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/etDate"
+        android:layout_below="@+id/etChronicDisease"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:gravity="center" />

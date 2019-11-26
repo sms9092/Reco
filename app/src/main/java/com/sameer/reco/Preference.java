@@ -14,6 +14,17 @@ public class Preference {
         sharedPreferences = context.getSharedPreferences(context.getString(R.string.pref_file),Context.MODE_PRIVATE);
     }
 
+    public void writeProfile(byte[] name)
+    {   String str = new String(name);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(context.getString(R.string.pref_profile), str);
+        editor.commit();
+    }
+    public String readProfile()
+    {
+        return sharedPreferences.getString(context.getString(R.string.pref_profile),"There should be a profile here");
+    }
+
     public void  writeLoginStatus(boolean status)
     {
         SharedPreferences.Editor editor = sharedPreferences.edit();

@@ -9,13 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
-import java.io.IOException;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -48,48 +48,48 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String username = etUserName.getText().toString();
         String password = etPassword.getText().toString();
 
-        if(username.isEmpty()){
-            etUserName.setError("Username is required");
-            etUserName.requestFocus();
-        }
 
-        if(password.isEmpty()){
-            etPassword.setError("Password is required");
-            etPassword.requestFocus();
-        }
-        Call<User> call = RetroFitClient
-                .getInstance()
-                .getApi()
-                .loginUser(username,password);
+        String url = "http://134.209.144.24/api/";
+        AsyncHttpClient client = new AsyncHttpClient();
+        RequestParams params = new RequestParams();
+        params.put("class", "Patient");
+        params.put("action", "login");
+        params.put("username", username);
+        params.put("password", password);
+        client.get(url,params, new AsyncHttpResponseHandler() {
 
-        call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-
-
-
-                 if(response.body().getResponse().equals("okay"))
-                 {
-                     System.out.println("Successful");
-                     MainActivity.prefconfig.writeLoginStatus(true);
-                     MainActivity.prefconfig.writeName(response.body().getName());
-                     Intent UserIntent = new Intent(LoginActivity.this, UserAreaActivity.class);
-                     LoginActivity.this.startActivity(UserIntent);
-
-                 }
-                 else if (response.body().getResponse().equals("failed"))
-                 {
-                     System.out.println("failed");
-
-
-                 }
+            public void onStart() {
+                // called before request is started
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                MainActivity.prefconfig.displayToast("Login Failed.. PLease try again");
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+               String str = new String(responseBody);
+               System.out.println( "Results from http" + str);
+               MainActivity.prefconfig.writeProfile(responseBody);
+               MainActivity.prefconfig.writeLoginStatus(true);
+
+
+
+                Intent UserIntent = new Intent(LoginActivity.this, UserAreaActivity.class);
+                LoginActivity.this.startActivity(UserIntent);
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+                String str = new String(responseBody);
+                System.out.println( "Results from http" + str);
+            }
+
+
+            @Override
+            public void onRetry(int retryNo) {
+                // called when request is retried
             }
         });
+
         etUserName.setText("");
         etPassword.setText("");
     }

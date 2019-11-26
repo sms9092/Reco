@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class UserAreaActivity extends AppCompatActivity {
+public class UserAreaActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView textview;
-    private Button btLogout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,16 +21,33 @@ public class UserAreaActivity extends AppCompatActivity {
 
 
         textview = findViewById(R.id.txt_user_name);
-        btLogout = findViewById(R.id.Logout);
         textview.setText("Welcome " +MainActivity.prefconfig.readName());
-        btLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent LoginIntent = new Intent(UserAreaActivity.this, LoginActivity.class);
-                UserAreaActivity.this.startActivity(LoginIntent);
-                MainActivity.prefconfig.writeLoginStatus(false);
-            }
-        });
+        findViewById(R.id.ProfileActivity).setOnClickListener(this);
+        findViewById(R.id.ReportsActivity).setOnClickListener(this);
+        findViewById(R.id.Logout).setOnClickListener(this);
 
+
+    }
+
+
+    @Override
+    public void onClick(View v){
+        switch(v.getId()){
+            case R.id.ProfileActivity:
+                Intent ProfileIntent = new Intent(UserAreaActivity.this, ProfileActivity.class);
+                UserAreaActivity.this.startActivity(ProfileIntent);
+                break;
+
+            case R.id.ReportsActivity:
+                Intent ReportsIntent = new Intent(UserAreaActivity.this, ReportsActivity.class);
+                UserAreaActivity.this.startActivity(ReportsIntent);
+                break;
+
+            case R.id.Logout:
+                Intent LogoutIntent = new Intent(UserAreaActivity.this, LoginActivity.class);
+                UserAreaActivity.this.startActivity(LogoutIntent);
+                MainActivity.prefconfig.writeLoginStatus(false);
+                break;
+        }
     }
 }
