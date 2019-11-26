@@ -64,36 +64,33 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         params.put("action", "login");
         params.put("username", username);
         params.put("password", password);
-        client.get(url, params, new JsonHttpResponseHandler() {
+        client.get(url, params, new AsyncHttpResponseHandler() {
 
 
             @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, JSONObject responseBody) {
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
 
-             /*  String str = new String(responseBody);
+               String str = new String(responseBody);
                System.out.println( "Results from http" + str);
                MainActivity.prefconfig.writeProfile(responseBody);
                MainActivity.prefconfig.writeLoginStatus(true);
 
 
-              */
+
                 Intent UserIntent = new Intent(LoginActivity.this, UserAreaActivity.class);
                 LoginActivity.this.startActivity(UserIntent);
 
 
-                Gson gson = new Gson();
-                String json = gson.toJson(responseBody);
-                System.out.println("Debug this"+json);
-               Response response = gson.fromJson(json,Response.class);
-                System.out.println(response.toString());
 
 
             }
 
-            public void onFailure(int statusCode, Header[] headers, Throwable t, JSONObject e)  {
-                // Handle the failure and alert the user to retry
-                Log.e("ERROR", e.toString());
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
             }
+
+
 
 
 
